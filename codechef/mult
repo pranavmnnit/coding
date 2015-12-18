@@ -1,0 +1,23 @@
+/* divide and conquer technique
+ * @input  : string1[n], string2[n] denoting string representation of numbers x and y, respectively
+ * @output : ans[2*n] of number z
+ * Time Complexity : T(n) = 3*T(n/2) + O(n)
+ */
+
+Logic:
+=====
+Divide string1[n1] into,
+       a <- string1[n .. n/2]
+       b <- string1[n/2-1 .. 0]
+Divide string2[n2] into,
+       c <- string2[m .. m/2]
+       d <- string2[m/2-1 .. 0]
+
+Let z = x*y
+      = (a*10^n/2 + b) * (c*10^n/2 + d)
+      = (a*c)*10^n + (a*d + b*d)*10^n/2 + (b*d)
+      = U*10^n + (W-U-V)*10^n/2 + V
+where,
+    U = a*c
+    V = b*d
+    W = (a+b)*(c+d)
